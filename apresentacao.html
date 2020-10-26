@@ -296,27 +296,8 @@ Apesar de ser extremamente útil, o PCA busca correlações lineares, e nem semp
 # Casos complicados ...
 
 - pedem algoritmos mais complexos.
-    - por exemplo desenrolar um rocambole,
 
-<img src="images/rocambole1.png" style="height:70%"/>
-
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-
-
-<img src="images/rocambole2.jpg" style="height:60%"/>
-
-
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-
-##  Mas não falaremos mais do isomap, a gente vai se enrolar em sua complexidade e vamos sair do escopo da apresentação. 
+<img src="images/rocambole1.png" style="height:60%"/>
 
 					</script>
 				</section>
@@ -325,7 +306,29 @@ Apesar de ser extremamente útil, o PCA busca correlações lineares, e nem semp
 					<script type="text/template">
 
 
-## Ao invés disso falaremos de dois algoritmos usados para visualizar dados multidimensionais:
+# PCA vs isomap
+
+- A -> B : isomap desenrola o rocambole
+- C -> D : PCA não desenrola
+<img src="images/rocambole2.jpg" style="height:30%"/>
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+## O isomap foi apenas ilustrativo para espaços complexos. 
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+## Falaremos de dois outros algoritmos para _visualizar_ dados:
 - t-SNE
 - UMAP
 
@@ -345,38 +348,40 @@ O artigo de Laurens van der Maaten e Geoffrey Hinton entitulado Visualizing Data
 				</section>
 
 
-			<section>
-
-				<section data-markdown>
-					<script type="text/template">
-
-O motivo do sucesso é de ordem prática: 
- - Os dados ficam bonitos. 
- - Coisas que acreditamos que deviam ficar próximas ficam próximas
-
-<img src="images/tsne.png" style="height:80%"/>
-
-
-					</script>
-				</section>
-
 				<section data-markdown>
 					<script type="text/template">
 
 
 - Entrada:
-    - Conjunto de dados numéricos
-    - Parametros ajustáveis (perplexidade é o principal)
+
+	- Conjunto de dados numéricos m x n
+	- Dimensões alvo (d)
+	- Outros parâmetros
 
 - Saída:
-    - n dimensões    
+
+	- Tabela m x d com d dimensões    
 
 
-- Implementações diversas, ex: class <a href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html" target="_blank">sklearn.manifold.TSNE()</a>
+- Implementação no sklearn: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html" target="_blank">sklearn.manifold.TSNE()</a>
 
 
 					</script>
 				</section>
+
+				<section>
+
+					<section data-markdown>
+						<script type="text/template">
+	
+	O motivo do sucesso é de ordem prática: 
+	 - Os dados ficam bonitos. 
+	
+	<img src="images/tsne.png" style="height:80%"/>
+	
+	
+						</script>
+					</section>
 
 				<section data-markdown>
 					<script type="text/template">
@@ -435,27 +440,6 @@ Exemplo: <a href="https://satijalab.org/seurat/v3.2/visualization_vignette.html"
 
 Aqui pegamos do tutorial do  <a href="https://satijalab.org/seurat/v1.4/pbmc3k_tutorial.html" target="_blank">pbmc3k</a>.
 <img src="images/pbmc3k_2.png" style="height:80%"/>
-
-
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-
-Os rótulos são feitos por agrupamento não supervisionado, e vistos no TSNE.
-Mas o agrupamento é relativamente caro, e é feito no espaço dos primeiros n componentes do PCA (n é escolhido pelo usuário)! 
-
-<img src="images/pbmc3k_3.png" style="height:30%"/>
-
-
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-
-Sendo assim, dá para ter mais proximidade, entender melhor o agrupamento, e ainda visualizar de forma bonita.  Por isso que as bordas não são perfeitas, como seriam num kNN, por exemplo:
 
 
 					</script>
