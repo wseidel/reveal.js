@@ -33,9 +33,14 @@
 					<script type="text/template">
 
 
-# Quem somos 
-- Tiago
-- Wesley
+### Redução de Dimensionalidade para Visualização e Análise de Dados 
+
+- Tiago Lubiana
+- Wesley Seidel
+
+Laboratório Avançado de Ciência de Dados
+
+26 de outubro de 2020
 					</script>
 				</section>
 
@@ -293,7 +298,7 @@ Apesar de ser extremamente útil, o PCA busca correlações lineares, e nem semp
 				<section data-markdown>
 					<script type="text/template">
 
-# Casos complicados ...
+# Casos complicados
 
 - pedem algoritmos mais complexos.
 
@@ -308,10 +313,9 @@ Apesar de ser extremamente útil, o PCA busca correlações lineares, e nem semp
 
 # PCA vs isomap
 
-- A -> B : <a href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html" target="_blank">isomap</a> 
-- A -> D : PCA não desenrola
+- 3 para 2 dimensões com PCA (em e isomap
 
-<img src="images/rocambole2.jpg" style="height:400px"/>
+<img src="images/rocambole2.png" style="height:400px"/>
 
 
 					</script>
@@ -337,13 +341,16 @@ Apesar de ser extremamente útil, o PCA busca correlações lineares, e nem semp
 				</section>
 
 			</section>
+			<section>
 
 				<section data-markdown>
 					<script type="text/template">
 
-
-O artigo de Laurens van der Maaten e Geoffrey Hinton entitulado Visualizing Data using t-SNE foi divulgado em 2008 e tem mais de 15 mil citações até hoje. <a href="https://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf" target="_blank" >(veja aqui)</a>
-
+# t-SNE
+ - <a href="https://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf" target="_blank" >Visualizing Data using t-SNE</a>
+ 	- Publicado em 2008:
+ 	- Laurens van der Maaten e Geoffrey Hinton
+ 	- Mais de 15 mil citações 
 
 					</script>
 				</section>
@@ -376,37 +383,18 @@ O artigo de Laurens van der Maaten e Geoffrey Hinton entitulado Visualizing Data
 						<script type="text/template">
 	
 	O motivo do sucesso é de ordem prática: 
-	 - Os dados ficam bonitos. 
-	
-	<img src="images/tsne.png" style="height:80%"/>
+	 - Os dados ficam bonitos.
+	 
+	 Dataset MNIST via tSNE:
+	<img src="images/tsne.png" style="height:400px"/>
 	
 	
 						</script>
 					</section>
 
-				<section data-markdown>
-					<script type="text/template">
-
-- NOTA: alguns algoritmos de tSNE rodam um PCA antes nos dados! 
-
-- A ideia geral do tSNE é de preservar “comunidades” em vez de preservar variancia. (talvez dar mais o feeling)
-
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-
-
-- Não é simples de entender, e ainda mais difícil de “dominar”. 
-- Um dos componetes da apresentação teve um professor que me deu aula de Biologia de Sistemas e comentou que ele não entendia o tSNE o suficiente para usar em análises com confiança.
-- Supomos que um método que é dificil de entender para um excelente professor do IME-USP, talvez seja dificil de entender de forma geral. 
-
-					</script>
-				</section>
-
 			</section>
 
+			</section>
 			<section>
 
 				<section data-markdown>
@@ -415,11 +403,11 @@ O artigo de Laurens van der Maaten e Geoffrey Hinton entitulado Visualizing Data
 
 ## Transcriptomica de células únicas
 
-- É o que está bombando na data science biomédica, com o projeto
-<a href="https://www.humancellatlas.org/" target="_blank">Human Cell Atlas</a>
-    - Projeto Genoma dessa década
-    - Medição de expressão de >20.000 genes por célula
-    - Datasets de um único experimento com mihares a centenas de milhares de células
+- A menina dos olhos da Ciência de Dados biomédica
+
+- Conjuntos de dados com
+	- 1.000 - 1.000.000 observações de células (linhas)
+	- Nível de atividade de 20.000 genes (colunas)
 
 					</script>
 				</section>
@@ -429,8 +417,8 @@ O artigo de Laurens van der Maaten e Geoffrey Hinton entitulado Visualizing Data
 
 
 
-Exemplo: <a href="https://satijalab.org/seurat/v3.2/visualization_vignette.html" target="_blank">Dataset pbmc3k</a>, de células do sangue:
-<img src="images/pbmc3k.png" style="height:70%"/>
+<a href="https://satijalab.org/seurat/v3.2/visualization_vignette.html" target="_blank">pbmc3k</a>, 3000 células de sangue, PCA:
+<img src="images/pbmc3k.png" style="height:500px"/>
 
 					</script>
 				</section>
@@ -439,7 +427,7 @@ Exemplo: <a href="https://satijalab.org/seurat/v3.2/visualization_vignette.html"
 					<script type="text/template">
 
 
-Aqui pegamos do tutorial do  <a href="https://satijalab.org/seurat/v1.4/pbmc3k_tutorial.html" target="_blank">pbmc3k</a>.
+<a href="https://satijalab.org/seurat/v1.4/pbmc3k_tutorial.html" target="_blank">pbmc3k</a>, 3000 células de sangue, tSNE:
 <img src="images/pbmc3k_2.png" style="height:80%"/>
 
 
@@ -451,16 +439,21 @@ Aqui pegamos do tutorial do  <a href="https://satijalab.org/seurat/v1.4/pbmc3k_t
 
 ### O tSNE tem grande sucesso, mas um concorrente de porte chegou em 2018: 
 
+### UMAP
+
 
 					</script>
 				</section>
+
+			</section>
+			<section>
 
 				<section data-markdown>
 					<script type="text/template">
 
 # UMAP
 
- - UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction
+ - <a href="https://arxiv.org/abs/1802.03426">UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction </a>
 
  - “The UMAP algorithm is competitive with t-SNE for visualization quality, and arguably preserves more of the global structure with superior run time performance” 
 
@@ -472,7 +465,7 @@ Aqui pegamos do tutorial do  <a href="https://satijalab.org/seurat/v1.4/pbmc3k_t
 					<script type="text/template">
 
 
-Independente de justificativas técnicas, o UMAP começou a ser muito adotado. Minha explicação para esse sucesso é simples: por que as visualizações são bonitas.
+O UMAP começou a ser muito adotado, tanto por que as visualizações são bonitas quanto pela velocidade.
 
 
 					</script>
@@ -481,7 +474,7 @@ Independente de justificativas técnicas, o UMAP começou a ser muito adotado. M
 				<section data-markdown>
 					<script type="text/template">
 
-Em 2019 o pacote Seurat para R (o mais popular para análise desse tipo de dado) trocou a visualização padrão de tSNE para UMAP.
+Em 2019 o principal pacote para análise de células únicas trocou o padrão de tSNE para UMAP.
 <img src="images/umap_1.png" style="height:130%"/>
 
 
@@ -493,9 +486,8 @@ Em 2019 o pacote Seurat para R (o mais popular para análise desse tipo de dado)
 
 
 - Não há uma razão para escolha entre UMAP e tSNE que não de ordem estética (“fica mais bonito”) ou prática  (“roda mais rápido”) .  
-- E o UMAP aparentemente roda mais rápido. 
-- Tem implementação em python com bons tutoriais: 
-https://pypi.org/project/umap-learn/
+- O UMAP costuma rodar mais rápido. 
+- Tem implementação em Python com bons tutoriais: https://pypi.org/project/umap-learn/
 
 					</script>
 				</section>
@@ -507,7 +499,7 @@ https://pypi.org/project/umap-learn/
 					<script type="text/template">
 
 
-# == Resumão ==
+# Resumão 
 
 
 					</script>
@@ -518,9 +510,10 @@ https://pypi.org/project/umap-learn/
 
 
 - Por que reduzir dimensões?
-    - Maior velocidade
-    - Reduzir sobreajuste
-    - Ver os dados
+	
+	- Obter maior velocidade
+	- Reduzir sobreajuste
+	- Ver os dados
 
 					</script>
 				</section>
@@ -530,9 +523,9 @@ https://pypi.org/project/umap-learn/
 
 
 - PCA
-    - A pedra fundamental da redução
-    - Busca relações lineares
-    - A escolha padrão para redução como pré-processamento
+	- O feijão com arroz da redução de dimensionalidade
+	- Busca relações lineares
+	- É a escolha padrão para redução como pré-processamento
 
 
 					</script>
@@ -542,9 +535,10 @@ https://pypi.org/project/umap-learn/
 					<script type="text/template">
 
 - tSNE
-    - Uma alternativa para visualização que não é linear
+    - Alternativa não-linear para visualização
     - Relativamente consolidado (2008)
-    - Mais bonito e mais complicado que o PCA
+	- Gráfico 2D mais bonito que o PCA
+	- Algoritmo mais complicado que o PCA
 
 
 					</script>
@@ -555,10 +549,13 @@ https://pypi.org/project/umap-learn/
 
 
 - UMAP
-    - Uma alternativa para visualização que não é linear
-    - Mais bonito e mais complicado que o PCA
-    - Mais rápido que o tSNE
-    - Uso crescente (2018)
+
+	- Alternativa não-linear para visualização
+	- Uso crescente (2018)
+	- Gráfico 2D mais bonito que o PCA
+	- Algoritmo mais complicado que o PCA
+	- Mais rápido que o tSNE
+
 
 
 					</script>
@@ -567,7 +564,7 @@ https://pypi.org/project/umap-learn/
 				<section data-markdown>
 					<script type="text/template">
 
-Todos com uso e implementação em Python. (R e Julia também)
+Todos com uso e implementação em Python e R. 
 
 					</script>
 				</section>
@@ -575,15 +572,20 @@ Todos com uso e implementação em Python. (R e Julia também)
 			</section>
 
 
-				<section data-markdown>
-					<script type="text/template">
+			<section data-markdown>
+				<script type="text/template">
 
 
-FIM
+### Redução de Dimensionalidade para Visualização e Análise de Dados 
 
+- Tiago Lubiana
+- Wesley Seidel
 
-					</script>
-				</section>
+Laboratório Avançado de Ciência de Dados
+
+26 de outubro de 2020
+				</script>
+			</section>
 
 
 
@@ -602,6 +604,7 @@ FIM
 			// Also available as an ES module, see:
 			// https://revealjs.com/initialization/
 			Reveal.initialize({
+				slideNumber: true,
 				controls: true,
 				progress: true,
 				center: true,
