@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+# Quem somos 
+- Tiago
+- Wesley
+					</script>
+				</section>
+
+			<section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+### Por que estamos falando de Redução de Dimensionalidade?
+
+- Dados de alta dimensionalidade por todos os lados
+ - Dados biomédicos
+     - “Omicas”
+ - Dados de PLN
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+- hype
+
+![image.png](attachment:image.png)
+
+https://pubmed.ncbi.nlm.nih.gov/?term=%22dimensionality%20reduction%22&size=200&timeline=expanded
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+## Quando falamos de redução de dimensionalidade, falamos geralmente de duas coisas
+- Seleção de variáveis
+- Criação de novas variáveis num espaço dimensional reduzido (projeção de variáveis)
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+Nosso foco é na segunda parte, por que o tempo é curto. Não focaremos nos algoritmos e detalhes matemáticos, mas no uso prático para ciencias de dados
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+Para que criar novas variáveis num espaço dimensional reduzido?
+
+- Menor custo computacional 
+- Evitar sobreajuste
+- Visualizar dados
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+#### Menor custo computacional 
+  - Menos colunas, economia para algoritmos caros e menos espaço na memória
+ 
+
+#### Evitar sobreajuste
+- Menos variáveis, menos espaço para alguma medição espúria correlacionar aleatoriamente com a classe alvo
+
+#### Visualizar dados
+- Gráficos em duas dimensoes são mais confortáveis para o (meu) cérebro humano
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+Os algoritmos de redução dimensional visam preservar propriedades do espaço multidimensional para otimizar esses objetivos.
+
+As 3 tarefas são relacionadas, mas distintas. Além disso, dependendo dos caprichos objetivos do cientista de dados, certas “ propriedades do espaço multidimensional” são de maior interesse. 
+
+
+- Sendo assim, há <a href="muitos_algoritmos_de_reducao.png" target="_blank" >muitos algoritmos</a> para isso.
+
+
+Sendo assim, há muitos algoritmos para isso:
+<!-- ![drawing](muitos_algoritmos_de_reducao.png) -->
+
+<img src="images/muitos_algoritmos_de_reducao.png" style="height:60%"/>
+
+					</script>
+				</section>
+			</section>
+
+
+			<section>
+				
+				<section data-markdown>
+					<script type="text/template">
+
+# PCA
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+O PCA tem seu charme e apelo por que é:
+
+- Relativamente simples de entender
+- Relativamente simples de implementar
+- Já é muito usado pela comunidade
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+(Explicar a matemática do PCA)
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+Apesar de ser extremamente útil, o PCA busca correlações lineares, e nem sempre é o que queremos.  
+
+
+<a href="pca_over_lfw_people.ipynb" target="_blank" >(Exemplos práticos de uso do PCA, talvez com o dataset MNIST)</a>
+
+
+					</script>
+				</section>
+
+
+			</section>
+			<section>
+
+
+				<section data-markdown>
+					<script type="text/template">
+
+# Casos complicados ...
+
+- pedem algoritmos mais complexos.
+    - por exemplo desenrolar um rocambole,
+
+<img src="images/rocambole1.png" style="height:70%"/>
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+<img src="images/rocambole2.jpg" style="height:60%"/>
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+##  Mas não falaremos mais do isomap, a gente vai se enrolar em sua complexidade e vamos sair do escopo da apresentação. 
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+## Ao invés disso falaremos de dois algoritmos usados para visualizar dados multidimensionais:
+- t-SNE
+- UMAP
+
+					</script>
+				</section>
+
+			</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+O artigo de Laurens van der Maaten e Geoffrey Hinton entitulado Visualizing Data using t-SNE foi divulgado em 2008 e tem mais de 15 mil citações até hoje. <a href="https://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf" target="_blank" >(veja aqui)</a>
+
+
+					</script>
+				</section>
+
+
+			<section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+O motivo do sucesso é de ordem prática: 
+ - Os dados ficam bonitos. 
+ - Coisas que acreditamos que deviam ficar próximas ficam próximas
+
+<img src="images/tsne.png" style="height:80%"/>
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+- Entrada:
+    - Conjunto de dados numéricos
+    - Parametros ajustáveis (perplexidade é o principal)
+
+- Saída:
+    - n dimensões    
+
+
+- Implementações diversas, ex: class <a href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html" target="_blank">sklearn.manifold.TSNE()</a>
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+- NOTA: alguns algoritmos de tSNE rodam um PCA antes nos dados! 
+
+- A ideia geral do tSNE é de preservar “comunidades” em vez de preservar variancia. (talvez dar mais o feeling)
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+- Não é simples de entender, e ainda mais difícil de “dominar”. 
+- Um dos componetes da apresentação teve um professor que me deu aula de Biologia de Sistemas e comentou que ele não entendia o tSNE o suficiente para usar em análises com confiança.
+- Supomos que um método que é dificil de entender para um excelente professor do IME-USP, talvez seja dificil de entender de forma geral. 
+
+					</script>
+				</section>
+
+			</section>
+
+			<section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+## Transcriptomica de células únicas
+
+- É o que está bombando na data science biomédica, com o projeto
+<a href="https://www.humancellatlas.org/" target="_blank">Human Cell Atlas</a>
+    - Projeto Genoma dessa década
+    - Medição de expressão de >20.000 genes por célula
+    - Datasets de um único experimento com mihares a centenas de milhares de células
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+
+Exemplo: <a href="https://satijalab.org/seurat/v3.2/visualization_vignette.html" target="_blank">Dataset pbmc3k</a>, de células do sangue:
+<img src="images/pbmc3k.png" style="height:70%"/>
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+Aqui pegamos do tutorial do  <a href="https://satijalab.org/seurat/v1.4/pbmc3k_tutorial.html" target="_blank">pbmc3k</a>.
+<img src="images/pbmc3k_2.png" style="height:80%"/>
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+Os rótulos são feitos por agrupamento não supervisionado, e vistos no TSNE.
+Mas o agrupamento é relativamente caro, e é feito no espaço dos primeiros n componentes do PCA (n é escolhido pelo usuário)! 
+
+<img src="images/pbmc3k_3.png" style="height:30%"/>
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+Sendo assim, dá para ter mais proximidade, entender melhor o agrupamento, e ainda visualizar de forma bonita.  Por isso que as bordas não são perfeitas, como seriam num kNN, por exemplo:
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+### O tSNE tem grande sucesso, mas um concorrente de porte chegou em 2018: 
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+# UMAP
+
+ - UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction
+
+ - “The UMAP algorithm is competitive with t-SNE for visualization quality, and arguably preserves more of the global structure with superior run time performance” 
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+Independente de justificativas técnicas, o UMAP começou a ser muito adotado. Minha explicação para esse sucesso é simples: por que as visualizações são bonitas.
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+Em 2019 o pacote Seurat para R (o mais popular para análise desse tipo de dado) trocou a visualização padrão de tSNE para UMAP.
+<img src="images/umap_1.png" style="height:130%"/>
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+- Não há uma razão para escolha entre UMAP e tSNE que não de ordem estética (“fica mais bonito”) ou prática  (“roda mais rápido”) .  
+- E o UMAP aparentemente roda mais rápido. 
+- Tem implementação em python com bons tutoriais: 
+https://pypi.org/project/umap-learn/
+
+					</script>
+				</section>
+
+			</section>
+			<section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+# == Resumão ==
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+- Por que reduzir dimensões?
+    - Maior velocidade
+    - Reduzir sobreajuste
+    - Ver os dados
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+- PCA
+    - A pedra fundamental da redução
+    - Busca relações lineares
+    - A escolha padrão para redução como pré-processamento
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+- tSNE
+    - Uma alternativa para visualização que não é linear
+    - Relativamente consolidado (2008)
+    - Mais bonito e mais complicado que o PCA
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+- UMAP
+    - Uma alternativa para visualização que não é linear
+    - Mais bonito e mais complicado que o PCA
+    - Mais rápido que o tSNE
+    - Uso crescente (2018)
+
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+Todos com uso e implementação em Python. (R e Julia também)
+
+					</script>
+				</section>
+
+			</section>
+
+
+				<section data-markdown>
+					<script type="text/template">
+
+
+FIM
+
+
+					</script>
+				</section>
+
+
+
+			</div>
+
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/search/search.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+			});
+
+		</script>
+
+	</body>
+</html>
