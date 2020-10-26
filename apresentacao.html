@@ -43,14 +43,50 @@
 
 				<section data-markdown>
 					<script type="text/template">
+### Redução de Dimensionalidade
+ 					</script>
+				</section>
 
+				<section data-markdown>
+					<script type="text/template">
+### O problema
+ - O mundo vem experimentando nos ultimos anos uma crescente ("explosão") disponibilidade de informações.
+ - Com consequencia disso, uma série de plataformas de big data, de algoritmos de analíticos, paralelizáveis foram criados.
+ - EM SUMA: Muitas ferramentas estão sendo criadas...
 
-### Por que estamos falando de Redução de Dimensionalidade?
+					</script>
+				</section>
 
-- Dados de alta dimensionalidade por todos os lados
+				<section data-markdown>
+					<script type="text/template">
+
+### Dados por todos os lados:
  - Dados biomédicos
-     - “Omicas”
- - Dados de PLN
+ - Dados de Textos (PLN)
+ - Dados de Imagens
+ - IOT
+ - etc...
+
+					</script>
+				</section>
+
+
+
+				<section data-markdown>
+					<script type="text/template">
+### Como fornecer essas informações aos algoritmos e procedimentos de analises ?
+ - Precisamos de uma forma de representação..
+					</script>
+				</section>
+
+
+				<section data-markdown>
+					<script type="text/template">
+
+### Como representamos dados para analise?
+ - Uma das forma de representar tais informações é em termos de:
+ 	- Linhas: Exemplos do que se quer analise (registros);
+ 	- Coluna: Características (atributos).
 
 					</script>
 				</section>
@@ -58,11 +94,37 @@
 				<section data-markdown>
 					<script type="text/template">
 
-- hype
+### Muitos dados -> Maldição da dimensionalidade:
+ - Quando a dimensionalidade aumenta, o volume do espaço cresce tão rapidamente que os dados disponíveis se tornam esparsos..
+ - ... a densidade de informação neste espaço é reduzida. 
+   - (Richard E. Bellman - 1957)
+	
 
-![image.png](attachment:image.png)
+					</script>
+				</section>
 
-https://pubmed.ncbi.nlm.nih.gov/?term=%22dimensionality%20reduction%22&size=200&timeline=expanded
+
+				<section data-markdown>
+					<script type="text/template">
+
+<img src="images/alta_dimensao.jpg" style="height:60%"/>
+
+					</script>
+				</section>
+
+
+
+				<section data-markdown>
+					<script type="text/template">
+
+### Relembrando: 
+- Por que estamos falando de Redução de Dimensionalidade?
+ - Dados de alta dimensionalidade por todos os lados
+   - Dados biomédicos
+   - Dados de Textos (PLN)
+   - Dados de Imagens
+   - ...
+ - e o HYPE
 
 					</script>
 				</section>
@@ -70,9 +132,18 @@ https://pubmed.ncbi.nlm.nih.gov/?term=%22dimensionality%20reduction%22&size=200&
 				<section data-markdown>
 					<script type="text/template">
 
-## Quando falamos de redução de dimensionalidade, falamos geralmente de duas coisas
-- Seleção de variáveis
-- Criação de novas variáveis num espaço dimensional reduzido (projeção de variáveis)
+<img src="images/hype.png" style="height:60%"/>
+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+
+#### Quando falamos de redução de dimensionalidade, falamos geralmente de duas coisas:
+- Seleção de variáveis;
+- Criação de novas variáveis num espaço dimensional reduzido (projeção de variáveis).
+
 
 
 					</script>
@@ -81,8 +152,8 @@ https://pubmed.ncbi.nlm.nih.gov/?term=%22dimensionality%20reduction%22&size=200&
 				<section data-markdown>
 					<script type="text/template">
 
-
-Nosso foco é na segunda parte, por que o tempo é curto. Não focaremos nos algoritmos e detalhes matemáticos, mas no uso prático para ciencias de dados
+- Nosso foco é na segunda parte -> Criação de novas variáveis.
+- Não focaremos nos algoritmos e detalhes matemáticos, mas no uso prático para ciencias de dados...
 
 
 					</script>
@@ -90,12 +161,12 @@ Nosso foco é na segunda parte, por que o tempo é curto. Não focaremos nos alg
 
 				<section data-markdown>
 					<script type="text/template">
-
-Para que criar novas variáveis num espaço dimensional reduzido?
+#### Para que criar novas variáveis num espaço dimensional reduzido?
 
 - Menor custo computacional 
 - Evitar sobreajuste
 - Visualizar dados
+- Evitar eliminação de exemplos
 
 					</script>
 				</section>
@@ -105,31 +176,41 @@ Para que criar novas variáveis num espaço dimensional reduzido?
 
 #### Menor custo computacional 
   - Menos colunas, economia para algoritmos caros e menos espaço na memória
- 
-
-#### Evitar sobreajuste
-- Menos variáveis, menos espaço para alguma medição espúria correlacionar aleatoriamente com a classe alvo
-
-#### Visualizar dados
-- Gráficos em duas dimensoes são mais confortáveis para o (meu) cérebro humano
-
 
 					</script>
 				</section>
 
 				<section data-markdown>
 					<script type="text/template">
+#### Evitar sobreajuste
+- Menos variáveis, menos espaço para alguma medição espúria correlacionar aleatoriamente com a classe alvo
+					</script>
+				</section>
 
-Os algoritmos de redução dimensional visam preservar propriedades do espaço multidimensional para otimizar esses objetivos.
+				<section data-markdown>
+					<script type="text/template">
+#### Visualizar dados
+- Gráficos em duas dimensões são mais confortáveis para o (meu) cérebro humano
+					</script>
+				</section>
 
-As 3 tarefas são relacionadas, mas distintas. Além disso, dependendo dos caprichos objetivos do cientista de dados, certas “ propriedades do espaço multidimensional” são de maior interesse. 
+
+				<section data-markdown>
+					<script type="text/template">
+- Para para alcançar estes objetivos os algoritmos de redução dimensional visam preservar propriedades do espaço multidimensional.
+
+- As 3 tarefas são relacionadas, mas distintas. 
+- Dependendo do tipo de analise, certas "propriedades do espaço multidimensional" são de maior interesse. 
+
+					</script>
+				</section>
 
 
-- Sendo assim, há <a href="muitos_algoritmos_de_reducao.png" target="_blank" >muitos algoritmos</a> para isso.
+				<section data-markdown>
+					<script type="text/template">
 
+- Sendo assim, há <a href="images/muitos_algoritmos_de_reducao.png" target="_blank" >muitos algoritmos</a> para isso.
 
-Sendo assim, há muitos algoritmos para isso:
-<!-- ![drawing](muitos_algoritmos_de_reducao.png) -->
 
 <img src="images/muitos_algoritmos_de_reducao.png" style="height:60%"/>
 
@@ -142,8 +223,9 @@ Sendo assim, há muitos algoritmos para isso:
 				
 				<section data-markdown>
 					<script type="text/template">
-
 # PCA
+- Análise de componentes principais ;
+- PCA, do inglês Principal Component Analysis.
 
 					</script>
 				</section>
@@ -163,16 +245,39 @@ O PCA tem seu charme e apelo por que é:
 
 				<section data-markdown>
 					<script type="text/template">
-(Explicar a matemática do PCA)
-
+#### Como funciona?
+ - O PCA combina a essência dos atributos originais e cria um NOVO e MENOR subconjunto de variáveis para representar os dados.
+ - Os dados originais são projetados sobre estas novas variáveis.
 
 					</script>
 				</section>
 
 				<section data-markdown>
 					<script type="text/template">
-Apesar de ser extremamente útil, o PCA busca correlações lineares, e nem sempre é o que queremos.  
+#### Como funciona (um pouco mais de detalhes):
+ - Os dados(colunas) originais são normalizados;
+ - Calcula a matriz de covariância;
+ - Calcula os autovetores e autovaores;
+ - Ordena os autovetores por seus autovalores
+ - Escolha os primeiros k autovetores;
+ - Ajusta os dados originais à nova dimensão k.
 
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+### EXEMPLO
+ - A
+ - B 
+					</script>
+				</section>
+
+
+
+				<section data-markdown>
+					<script type="text/template">
+Apesar de ser extremamente útil, o PCA busca correlações lineares, e nem sempre é o que queremos.  
 
 <a href="pca_over_lfw_people.ipynb" target="_blank" >(Exemplos práticos de uso do PCA, talvez com o dataset MNIST)</a>
 
